@@ -125,26 +125,6 @@ plt.savefig( "penguins_kmeans.png", dpi=200, bbox_inches="tight")
 plt.close()
 
 # ======================================================
-# 2c) WINE QUALITY (UCI) con ucimlrepo (id=186)
-# ======================================================
-
-from ucimlrepo import fetch_ucirepo
-
-wine_quality = fetch_ucirepo(id=186)
-
-X_wq = wine_quality.data.features
-y_wq = wine_quality.data.targets
-
-df_wine = X_wq.copy()
-
-# puede venir como DataFrame
-if isinstance(y_wq, pd.DataFrame):
-    df_wine["quality"] = y_wq.iloc[:, 0].values
-else:
-    df_wine["quality"] = y_wq
-
-# Filtrar solo red
-# ======================================================
 # 2c) WINE QUALITY (UCI) con ucimlrepo (sin columna 'type')
 # ======================================================
 
@@ -184,5 +164,6 @@ plt.ylabel(df_wine.drop(columns=["quality", "cluster"]).columns[1])
 plt.title("Wine Quality - KMeans desde cero")
 plt.savefig("wine_kmeans.png", dpi=200, bbox_inches="tight")
 plt.close()
+
 
 print("\nListo ✅ Se guardaron las imágenes: iris_kmeans.png, penguins_kmeans.png, wine_red_kmeans.png")
